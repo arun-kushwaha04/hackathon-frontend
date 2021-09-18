@@ -4,12 +4,15 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(false);
+  const [userType, setUserType] = useState("Patient");
 
   return (
     <AppContext.Provider
       value={{
         loginStatus,
         setLoginStatus,
+        userType,
+        setUserType,
       }}>
       {children}
     </AppContext.Provider>
