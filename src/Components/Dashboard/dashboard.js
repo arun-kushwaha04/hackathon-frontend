@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { UseGlobalContext } from "../../Context";
 import { doctor } from "../../data";
+import Card from "./Card";
 import Filter from "../Filter/filter";
-import { Button } from "reactstrap";
 import "./dashboard.scss";
 
 export default function dashboard() {
@@ -13,24 +13,11 @@ export default function dashboard() {
       <CardDiv>
         {doctor.map((element, index) => {
           return (
-            <div key={`card-element-${index}`}>
-              <h1>{element.specialization} Specialist</h1>
-              <article>
-                <p>
-                  <span>Doctor {element.name}</span>
-                </p>
-                <p>
-                  <span>Experience :</span> {element.experience}
-                </p>
-                <p>
-                  <span>Rating :</span> {element.rating}
-                </p>
-                <p>
-                  <span>Fees :</span> ₹{element.price}
-                </p>
-              </article>
-              <Button type="submit">Shedule Appointment</Button>
-            </div>
+            <Card
+              element={element}
+              index={index}
+              key={`card-element-${index}`}
+            />
           );
         })}
       </CardDiv>
@@ -57,9 +44,9 @@ const CardDiv = styled.div`
     font-size: 1.5rem;
     padding: 1rem;
     background: var(--Lightest_Slate);
-    position:relative;
-    border-radius:1rem;
-    box-shadow: 0 2px 4px 0 rgba( 31, 38, 135, 0.37 );
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px 0 rgba(31, 38, 135, 0.37);
     h1 {
       text-align: center;
       color: var(--Lighest_Backround);
@@ -69,19 +56,18 @@ const CardDiv = styled.div`
       margin-bottom: 1rem;
     }
     button {
-     background-color: black:
-     color: white;
-     position:absolute;
-     bottom:2rem;
-     right:1rem;
-     outline:none;
-     border:none;
-     padding:1rem 0.5rem;
-     border-radius:0.5rem;
-     cursor:pointer;
-     font-family: 'Roboto', sans-serif;
-     left:1rem;
-     font-size:1.5rem;
+      color: white;
+      position: absolute;
+      bottom: 2rem;
+      right: 1rem;
+      outline: none;
+      border: none;
+      padding: 1rem 0.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-family: "Roboto", sans-serif;
+      left: 1rem;
+      font-size: 1.5rem;
     }
   }
   article {
@@ -89,5 +75,5 @@ const CardDiv = styled.div`
     span {
       font-weight: 500;
     }
-   }  
+  }
 `;

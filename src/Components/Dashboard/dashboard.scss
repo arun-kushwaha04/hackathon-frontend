@@ -27,3 +27,21 @@
 .filter-div span {
     font-size: 1.5rem;
 }
+
+.modal {
+    input {
+        font-size: 1.5rem;
+    }
+    legend span {
+        font-size: 1.5rem;
+    }
+    button {
+        outline: none;
+        border: none;
+        padding: 1rem 0.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.5rem;
+    }
+}

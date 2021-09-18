@@ -7,8 +7,10 @@ import "./navbar.scss";
 export default function Nav() {
   const { userType, loginStatus } = UseGlobalContext();
   const navList =
-    userType === "Patient"
+    userType === "patient"
       ? ["Book a Session", "Sheduled Appointments"]
+      : loginStatus
+      ? ["Edit Information", "Appointments"]
       : ["Appointments"];
   return (
     <NavBar>

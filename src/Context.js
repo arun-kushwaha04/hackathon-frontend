@@ -4,7 +4,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(false);
-  const [userType, setUserType] = useState("Doctor");
+  const [userType, setUserType] = useState("patient");
   const [filterArray, setFilterArray] = useState(["rating"]);
 
   return (
