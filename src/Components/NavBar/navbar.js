@@ -2,6 +2,7 @@ import React from "react";
 import LogoIMG from "../../assets/logo.svg";
 import styled from "styled-components";
 import { UseGlobalContext } from "../../Context";
+import "./navbar.scss";
 
 export default function Nav() {
   const { userType, loginStatus } = UseGlobalContext();
@@ -11,21 +12,24 @@ export default function Nav() {
       : ["Appointments"];
   return (
     <NavBar>
-      <Logo>
+      <Logo className="logo-div">
         <img src={LogoIMG} alt="logo" />
         HealthVisiory
       </Logo>
-      <Div>
+      <Div className="nav-link-div">
         <List>
           {navList.map((element, idx) => {
             return <li key={`navlink-${idx}`}>{element}</li>;
           })}
+
+          <li key={`navlink-login`}>
+            <p>
+              {loginStatus === true
+                ? `Hello ${localStorage.get("Name")}`
+                : "Sign UP/IN"}
+            </p>
+          </li>
         </List>
-        <p>
-          {loginStatus === true
-            ? `Hello ${localStorage.get("Name")}`
-            : "Sign UP/IN"}
-        </p>
       </Div>
     </NavBar>
   );
@@ -66,9 +70,6 @@ const Div = styled.div`
     cursor: pointer;
     color: var(--Lighest_Backround);
     font-family: "Roboto", sans-serif;
-    &:hover {
-      color: var(--Slate);
-    }
   }
 `;
 
@@ -87,9 +88,11 @@ const List = styled.ul`
     font-family: "Roboto Mono", monospace;
     cursor: pointer;
     color: var(--Lighest_Backround);
+    padding-bottom: 8px;
 
     &:hover {
       color: var(--Slate);
+      border-bottom: 2px dotted green;
     }
   }
 `;
