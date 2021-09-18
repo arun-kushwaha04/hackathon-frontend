@@ -6,6 +6,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Fade from "@material-ui/core/Fade";
+import { UseGlobalContext } from "../../Context";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -39,8 +40,13 @@ const bookAppointment = (e, index) => {
 export default function Card(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const { loginStatus } = UseGlobalContext();
 
   const handleOpen = () => {
+    if (!loginStatus) {
+      alert("Please Login/Sign Up to Book a Appointment");
+      return;
+    }
     setOpen(true);
   };
 
@@ -84,6 +90,10 @@ export default function Card(props) {
           <div className={classes.paper}>
             <Stack component="form" noValidate spacing={3}>
               <h1>Shedule Appointment</h1>
+              <h4>
+                Please Note That Your Are Sheduling A Appointment With Doctor{" "}
+                {element.name}.
+              </h4>
               <TextField
                 id={`datetime-local-${index}`}
                 label="Appointment Details"

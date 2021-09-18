@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { UseGlobalContext } from "../../Context";
 import { doctor } from "../../data";
 import Card from "./Card";
 import Filter from "../Filter/filter";
