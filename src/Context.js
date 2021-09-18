@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [userType, setUserType] = useState("Patient");
+  const [filterArray, setFilterArray] = useState(["rating"]);
 
   return (
     <AppContext.Provider
@@ -13,6 +14,8 @@ const AppProvider = ({ children }) => {
         setLoginStatus,
         userType,
         setUserType,
+        filterArray,
+        setFilterArray,
       }}>
       {children}
     </AppContext.Provider>
