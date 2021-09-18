@@ -1,0 +1,29 @@
+.main-section-dashboard {
+    width: 100%;
+    min-height: 100vh;
+    padding: 5rem;
+    margin: auto;
+    font-family: "Roboto", sans-serif;
+}
+
+.filter-input-div input {
+    outline: none;
+    height: 100%;
+    font-size: 1.75rem;
+    padding: 0 0.5rem;
+}
+
+.filter-div {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row !important;
+    gap: 1rem;
+    align-self: center;
+}
+
+.filter-div span {
+    font-size: 1.5rem;
+}
