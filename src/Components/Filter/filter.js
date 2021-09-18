@@ -28,7 +28,6 @@ export default function Filter() {
   const onChangedHandle = (e, label) => {
     console.log("is checked", isChecked(label));
     if (isChecked(label)) {
-      console.log("in if statement");
       const temp = filterArray.filter((item) => item !== label);
       setFilterArray(temp);
       setCheckbox((prevState) => ({
@@ -36,7 +35,6 @@ export default function Filter() {
         [label]: false,
       }));
     } else {
-      console.log("in else statement");
       setFilterArray((prevState) => [...prevState, label]);
       setCheckbox((prevState) => ({
         ...prevState,
@@ -44,6 +42,7 @@ export default function Filter() {
       }));
     }
   };
+  console.log(filterArray);
   return (
     <MainDiv>
       <div className="filter-input-div">

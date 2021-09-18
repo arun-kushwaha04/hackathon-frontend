@@ -28,3 +28,11 @@ html {
 body {
     background-color: var(--whtie);
 }
+
+.main-section-for-each-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 5rem;
+    margin: auto;
+    font-family: "Roboto", sans-serif;
+}

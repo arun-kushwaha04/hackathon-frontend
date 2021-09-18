@@ -69,7 +69,7 @@ export default function Card(props) {
           <span>Rating :</span> {element.rating}
         </p>
         <p>
-          <span>Fees :</span> ₹{element.price}
+          <span>Fees :</span> ₹{element.fees}
         </p>
       </article>
       <Button variant="contained" color="secondary" onClick={handleOpen}>

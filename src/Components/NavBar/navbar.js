@@ -1,17 +1,26 @@
 import React from "react";
 import LogoIMG from "../../assets/logo.svg";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { UseGlobalContext } from "../../Context";
 import "./navbar.scss";
 
 export default function Nav() {
   const { userType, loginStatus } = UseGlobalContext();
-  const navList =
-    userType === "patient"
-      ? ["Book a Session", "Sheduled Appointments"]
-      : loginStatus
-      ? ["Edit Information", "Appointments"]
-      : ["Appointments"];
+  const navList = loginStatus
+    ? userType === "patient"
+      ? [
+          { name: "Book a Session", link: "/" },
+          {
+            name: "Sheduled Appointments",
+            link: "/appointment?type=nextAppointments",
+          },
+        ]
+      : [
+          { name: "Edit Information", link: "doctorsEditPage" },
+          { name: "Appointments", link: "/appointment?type=nextAppointments" },
+        ]
+    : [];
   return (
     <NavBar>
       <Logo className="logo-div">
@@ -21,13 +30,17 @@ export default function Nav() {
       <Div className="nav-link-div">
         <List>
           {navList.map((element, idx) => {
-            return <li key={`navlink-${idx}`}>{element}</li>;
+            return (
+              <li key={`navlink-${idx}`}>
+                <Link to={element.link}>{element.name}</Link>
+              </li>
+            );
           })}
 
           <li key={`navlink-login`}>
             <p>
               {loginStatus === true
-                ? `Hello ${localStorage.get("Name")}`
+                ? `Hello ${localStorage.getItem("name")}`
                 : "Sign UP/IN"}
             </p>
           </li>
@@ -59,7 +72,7 @@ const Logo = styled.div`
   font-family: "Roboto Mono", monospace;
 `;
 const Div = styled.div`
-  width: 30%;
+  width: auto;
   height: auto;
   text-align: center;
   font-weight: 600;
@@ -96,5 +109,9 @@ const List = styled.ul`
       color: var(--Slate);
       border-bottom: 2px dotted green;
     }
+  }
+  a {
+    text-decoration: none;
+    color: var(--Lighest_Backround);
   }
 `;

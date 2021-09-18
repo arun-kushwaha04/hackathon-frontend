@@ -1,25 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { doctor } from "../../data";
+// import { doctor } from "../../data";
 import Card from "./Card";
 import Filter from "../Filter/filter";
+import { UseGlobalContext } from "../../Context";
+import { POSTWITHBODY } from "../../api";
 import "./dashboard.scss";
 
-export default function dashboard() {
+const getData = async (setDoctor, filterArray) => {
+  console.log("calling api");
+  let userData = {
+    filterArray: filterArray,
+  };
+  userData = JSON.stringify(userData);
+  try {
+    const res = await fetch(
+      `https://hackathon-app-api.herokuapp.com/api/doctors`,
+      {
+        method: "POST",
+        body: userData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data.data);
+    setDoctor(data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default function Dashboard() {
+  const [doctor, setDoctor] = useState(null);
+  const { filterArray } = UseGlobalContext();
+
+  useEffect(() => {
+    let userData = {
+      filterArray: filterArray,
+    };
+    userData = JSON.stringify(userData);
+    POSTWITHBODY("/api/doctors", userData)
+      .then((res) => setDoctor(res.data))
+      .catch((err) => console.log(err));
+
+    // getData(setDoctor, filterArray);
+  }, [filterArray]);
+
   return (
-    <section className="main-section-dashboard">
-      <Filter />
-      <CardDiv>
-        {doctor.map((element, index) => {
-          return (
-            <Card
-              element={element}
-              index={index}
-              key={`card-element-${index}`}
-            />
-          );
-        })}
-      </CardDiv>
+    <section className="main-section-for-each-page">
+      {!doctor || doctor.length === 0 ? (
+        <h1>No data Available</h1>
+      ) : (
+        <>
+          <Filter />
+          <CardDiv>
+            {doctor.map((element, index) => {
+              return (
+                <Card
+                  element={element}
+                  index={index}
+                  key={`card-element-${index}`}
+                />
+              );
+            })}
+          </CardDiv>
+        </>
+      )}
     </section>
   );
 }
