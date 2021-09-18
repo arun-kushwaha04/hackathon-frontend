@@ -7,31 +7,6 @@ import { UseGlobalContext } from "../../Context";
 import { POSTWITHBODY } from "../../api";
 import "./dashboard.scss";
 
-const getData = async (setDoctor, filterArray) => {
-  console.log("calling api");
-  let userData = {
-    filterArray: filterArray,
-  };
-  userData = JSON.stringify(userData);
-  try {
-    const res = await fetch(
-      `https://hackathon-app-api.herokuapp.com/api/doctors`,
-      {
-        method: "POST",
-        body: userData,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await res.json();
-    console.log(data.data);
-    setDoctor(data.data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export default function Dashboard() {
   const [doctor, setDoctor] = useState(null);
   const { filterArray } = UseGlobalContext();
@@ -44,8 +19,6 @@ export default function Dashboard() {
     POSTWITHBODY("/api/doctors", userData)
       .then((res) => setDoctor(res.data))
       .catch((err) => console.log(err));
-
-    // getData(setDoctor, filterArray);
   }, [filterArray]);
 
   return (

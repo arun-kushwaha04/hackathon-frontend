@@ -6,8 +6,8 @@ export default function Filter(props) {
   const { param } = props;
   return (
     <MainDiv>
-      <NavLink to="appointment?type=nextAppointments">
-        <span className={param === "nextAppointments" ? "tab" : null}>
+      <NavLink to="appointment?type=nextAppointment">
+        <span className={param === "nextAppointment" ? "tab" : null}>
           Next Appointment
         </span>
       </NavLink>

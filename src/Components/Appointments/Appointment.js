@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import { SIMPLEGET } from "../../api";
 import Filter from "./filter";
+import { UseGlobalContext } from "../../Context";
 
 export default function Appointment() {
   const [param, setParam] = useState(null);
   const location = useLocation();
+  const { userType } = UseGlobalContext();
   const link = window.location.search;
   useEffect(() => {
     const urlParams = new URLSearchParams(link);
     setParam(urlParams.get("type"));
   }, [link, location]);
+
+  useEffect(() => {
+    if (param) {
+      SIMPLEGET(
+        `/api/appointments/${param}/${userType}/${localStorage.getItem(
+          "patientID"
+        )}`
+      )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+  }, [param]);
   return (
     <section className="main-section-for-each-page">
       <Filter param={param} />
