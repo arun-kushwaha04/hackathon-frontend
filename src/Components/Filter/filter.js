@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
+// import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -85,7 +85,7 @@ export default function Filter() {
             <MenuItem value={"Surgeon"}>Surgeon</MenuItem>
             <MenuItem value={"Anesthesiologist"}>Anesthesiologist</MenuItem>
           </Select>
-          <FormHelperText>Select Doctor Type</FormHelperText>
+          {/* <FormHelperText>Select Doctor Type</FormHelperText> */}
         </FormControl>
       </div>
       <FormGroup className="filter-div">

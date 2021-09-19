@@ -18,7 +18,7 @@ const data = {
 };
 
 export default function Doctor() {
-  const doctorId = window.location.pathname.split("/doctor/")[1];
+  // const doctorId = window.location.pathname.split("/doctor/")[1];
   const name = "Doctor " + data.name;
   return (
     <section className="main-section-for-each-page">
