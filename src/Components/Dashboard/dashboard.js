@@ -17,7 +17,12 @@ export default function Dashboard() {
     };
     userData = JSON.stringify(userData);
     POSTWITHBODY("/api/doctors", userData)
-      .then((res) => setDoctor(res.data))
+      .then((res) => {
+        res.data.forEach((ele) => {
+          ele.rating = ele.rating["$numberDecimal"];
+        });
+        setDoctor(res.data);
+      })
       .catch((err) => console.log(err));
   }, [filterArray]);
 
