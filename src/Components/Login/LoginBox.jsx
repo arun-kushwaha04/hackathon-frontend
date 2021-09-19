@@ -63,4 +63,4 @@ function LoginBox() {
     )
 }
 
-export default LoginBox
+export default LoginBox;
