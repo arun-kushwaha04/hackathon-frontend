@@ -58,6 +58,8 @@ export default function Card(props) {
   };
   const { index, element } = props;
 
+  const doctorLink = `/doctor/${element._id}`;
+
   return (
     <div>
       {!loginStatus && open && (
@@ -105,7 +107,7 @@ export default function Card(props) {
             <AlertTitle>Time Error</AlertTitle>
             Appointment Time Should be 1Hrs After the Current Time.{" "}
             <strong>
-              <Link to="/login">Click Here To View Slots</Link>
+              <Link to={doctorLink}>Click Here To View Slots</Link>
             </strong>
           </Alert>
         </Stack>
@@ -163,9 +165,7 @@ export default function Card(props) {
                   Please Choose Appointment Time Between The Slot Given By
                   Doctor.
                 </p>
-                <a href="google.com" target="_blank">
-                  Click Here To see Slots
-                </a>
+                <Link to={doctorLink}>Click Here To View Slots</Link>
 
                 <Button
                   variant="contained"
