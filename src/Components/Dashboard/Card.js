@@ -9,6 +9,7 @@ import Fade from "@material-ui/core/Fade";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import { Link } from "react-router-dom";
+import { POSTWITHBODY } from "../../api";
 import { UseGlobalContext } from "../../Context";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +27,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const bookAppointment = (e, index, setTimeError, setOpen) => {
+const bookAppointment = (e, index, setTimeError, setOpen, element) => {
+  console.log(element);
   e.preventDefault();
   const id = "datetime-local-" + index;
-  let element = document.getElementById(id);
-  let time = new Date(element.value).getTime();
+  let buttonelement = document.getElementById(id);
+  let time = new Date(buttonelement.value).getTime();
   if (time < Date.now() + 3600000) {
     // console.log(time);
     // alert("Appointment Time Should be 1Hrs After the Current Time.");
@@ -40,6 +42,31 @@ const bookAppointment = (e, index, setTimeError, setOpen) => {
     return;
   } else {
     //make a request to api
+    let userData = {
+      patientId: localStorage.getItem("userId"),
+      doctorId: element["_id"],
+      date: time,
+      doctorname: element.name,
+      doctoremail: element.email,
+      doctorcontact: element.contact,
+      doctorexperience: element.doctorexperience,
+      doctorfees: element.doctorfees,
+      doctorspecialization: element.doctorspecialization,
+      patientname: localStorage.getItem("name"),
+      patientemail: localStorage.getItem("email"),
+      patientcontact: localStorage.getItem("contact"),
+      patientage: localStorage.getItem("age"),
+    };
+    userData = JSON.stringify(userData);
+    POSTWITHBODY("/api/requestAppointment", userData)
+      .then((res) => {
+        if (res.status === "success") {
+          alert("Appointment Booked");
+        } else {
+          alert("Appointment Not Booked");
+        }
+      })
+      .catch((err) => console.log(err));
   }
 };
 
@@ -50,6 +77,7 @@ export default function Card(props) {
   const { loginStatus } = UseGlobalContext();
 
   const handleOpen = () => {
+    setTimeError(false);
     setOpen(true);
   };
 
@@ -171,7 +199,7 @@ export default function Card(props) {
                   variant="contained"
                   color="secondary"
                   onClick={(e) =>
-                    bookAppointment(e, index, setTimeError, setOpen)
+                    bookAppointment(e, index, setTimeError, setOpen, element)
                   }>
                   Shedule Appointment
                 </Button>
