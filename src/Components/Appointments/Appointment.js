@@ -21,7 +21,7 @@ export default function Appointment() {
     if (param) {
       SIMPLEGET(
         `/api/appointments/${param}/${userType}/${localStorage.getItem(
-          "userID"
+          "userId"
         )}`
       )
         .then((res) => {
