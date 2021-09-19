@@ -14,7 +14,7 @@ export default function App() {
   const {loginStatus} = UseGlobalContext();
 
   return (
-    loginStatus === true?
+    window.localStorage.getItem('loggedIn') === true?
     <React.Fragment>
       <NavBar />
       <Switch>
