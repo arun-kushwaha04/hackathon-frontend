@@ -57,7 +57,7 @@ const CardDiv = styled.div`
   justify-content: space-evenly;
   padding: 2rem 0;
 
-  > div {
+  .card-div-doctor {
     width: 25rem;
     height: 25rem;
     margin: auto;
@@ -94,6 +94,22 @@ const CardDiv = styled.div`
     font-family: "Roboto Mono", monospace;
     span {
       font-weight: 500;
+    }
+  }
+
+  .MuiAlert-message {
+    div {
+      font-size: 2rem;
+    }
+    font-size: 1.5rem;
+  }
+
+  .MuiAlert-action {
+    button {
+      color: red;
+      svg {
+        font-size: 2rem;
+      }
     }
   }
 `;
