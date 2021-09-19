@@ -1,10 +1,33 @@
-.filter-input-div input {
-    outline: none;
-    height: 100%;
-    font-size: 1.75rem;
-    padding: 0 0.5rem;
+.filter-input-div {
+    label {
+        font-size: 1.75rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    #demo-simple-select-helper {
+        font-size: 1.5rem;
+        color: red;
+    }
+    fieldset legend span {
+        font-size: 1.5rem;
+    }
 }
 
+.MuiMenu-list {
+    display: flex;
+    flex-direction: column;
+    li {
+        font-size: 1.5rem;
+    }
+}
+
+// .filter-input-div input {
+//     outline: none;
+//     height: 100%;
+//     font-size: 1.75rem;
+//     padding: 0 0.5rem;
+// }
 .filter-div {
     width: auto;
     height: auto;

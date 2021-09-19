@@ -6,6 +6,7 @@ const AppProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(true);
   const [userType, setUserType] = useState("patient");
   const [filterArray, setFilterArray] = useState(["rating"]);
+  const [specialization, setSepcialization] = useState("");
 
   return (
     <AppContext.Provider
@@ -16,6 +17,8 @@ const AppProvider = ({ children }) => {
         setUserType,
         filterArray,
         setFilterArray,
+        specialization,
+        setSepcialization,
       }}>
       {children}
     </AppContext.Provider>

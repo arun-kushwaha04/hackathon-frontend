@@ -25,7 +25,7 @@ export default function Appointment() {
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
     }
-  }, [param]);
+  }, [param, userType]);
   return (
     <section className="main-section-for-each-page">
       <Filter param={param} />

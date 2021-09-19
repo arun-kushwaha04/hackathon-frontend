@@ -57,7 +57,7 @@ export default function Card(props) {
 
   return (
     <div>
-      <h1>{element.specialization} Specialist</h1>
+      <h1>{element.specialization}</h1>
       <article>
         <p>
           <span>Doctor {element.name}</span>

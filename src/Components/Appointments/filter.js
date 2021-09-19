@@ -21,6 +21,16 @@ export default function Filter(props) {
           Missed And Past Appointment
         </span>
       </NavLink>
+      <NavLink to="appointment?type=requestedAppointments">
+        <span className={param === "requestedAppointments" ? "tab" : null}>
+          Requested Appointment
+        </span>
+      </NavLink>
+      <NavLink to="appointment?type=cancelledAppointments">
+        <span className={param === "cancelledAppointments" ? "tab" : null}>
+          Cancelled Appointment
+        </span>
+      </NavLink>
     </MainDiv>
   );
 }
