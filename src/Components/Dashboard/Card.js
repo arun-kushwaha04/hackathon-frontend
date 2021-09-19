@@ -119,7 +119,7 @@ export default function Card(props) {
             <span>Doctor {element.name}</span>
           </p>
           <p>
-            <span>Experience :</span> {element.experience}
+            <span>Experience :</span> {element.experience} Years
           </p>
           <p>
             <span>Rating :</span> {element.rating}

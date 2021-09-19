@@ -36,8 +36,7 @@ export default function Card(props) {
       experience = null;
     }
   }
-
-  const doctorLink = `/doctor/${data._id}`;
+  const doctorLink = `/doctor/${data.doctorId}`;
 
   return (
     <div>
@@ -62,6 +61,11 @@ export default function Card(props) {
             <p>
               <span>Fees :</span> ₹{fees}
             </p>
+            {param === "cancelledAppointments" && (
+              <p>
+                <span>Comment :</span> ₹{data.comment}
+              </p>
+            )}
           </article>
           {param === "nextAppointment" ? (
             <Button variant="contained" color="secondary">
