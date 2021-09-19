@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { SIMPLEGET } from "../../api";
 import Filter from "./filter";
+import Card from "./Card";
 import { UseGlobalContext } from "../../Context";
 
 export default function Appointment() {
+  const [data, setData] = useState(null);
   const [param, setParam] = useState(null);
   const location = useLocation();
   const { userType } = UseGlobalContext();
@@ -19,10 +21,12 @@ export default function Appointment() {
     if (param) {
       SIMPLEGET(
         `/api/appointments/${param}/${userType}/${localStorage.getItem(
-          "patientID"
+          "userID"
         )}`
       )
-        .then((res) => console.log(res))
+        .then((res) => {
+          setData(res[param]);
+        })
         .catch((err) => console.log(err));
     }
   }, [param, userType]);
@@ -30,7 +34,20 @@ export default function Appointment() {
     <section className="main-section-for-each-page">
       <Filter param={param} />
       <CardDiv>
-        <h1>{param}</h1>
+        {!data || data.length === 0 ? (
+          <h1>No Data Available</h1>
+        ) : (
+          data.map((element, index) => {
+            return (
+              <Card
+                data={element}
+                param={param}
+                index={index}
+                key={`card-element-${index}`}
+              />
+            );
+          })
+        )}
       </CardDiv>
     </section>
   );
@@ -50,7 +67,7 @@ const CardDiv = styled.div`
 
   > div {
     width: 25rem;
-    height: 25rem;
+    height: 30rem;
     margin: auto;
     font-size: 1.5rem;
     padding: 1rem;

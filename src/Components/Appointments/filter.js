@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { UseGlobalContext } from "../../Context";
 import styled from "styled-components";
 
 export default function Filter(props) {
+  const { userType } = UseGlobalContext();
   const { param } = props;
   return (
     <MainDiv>
@@ -16,21 +18,25 @@ export default function Filter(props) {
           Future Appointment
         </span>
       </NavLink>
-      <NavLink to="appointment?type=pastAppointments">
-        <span className={param === "pastAppointments" ? "tab" : null}>
-          Missed And Past Appointment
-        </span>
-      </NavLink>
+      {userType === "patient" && (
+        <NavLink to="appointment?type=pastAppointments">
+          <span className={param === "pastAppointments" ? "tab" : null}>
+            Missed And Past Appointment
+          </span>
+        </NavLink>
+      )}
       <NavLink to="appointment?type=requestedAppointments">
         <span className={param === "requestedAppointments" ? "tab" : null}>
           Requested Appointment
         </span>
       </NavLink>
-      <NavLink to="appointment?type=cancelledAppointments">
-        <span className={param === "cancelledAppointments" ? "tab" : null}>
-          Cancelled Appointment
-        </span>
-      </NavLink>
+      {userType === "patient" && (
+        <NavLink to="appointment?type=cancelledAppointments">
+          <span className={param === "cancelledAppointments" ? "tab" : null}>
+            Cancelled Appointment
+          </span>
+        </NavLink>
+      )}
     </MainDiv>
   );
 }

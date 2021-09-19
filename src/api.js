@@ -1,4 +1,5 @@
-const BASE_URL = "https://hackathon-app-api.herokuapp.com";
+// const BASE_URL = "https://hackathon-app-api.herokuapp.com";
+const BASE_URL = "http://localhost:80";
 
 export function SIMPLEGET(url) {
   return new Promise((resolve, reject) => {
