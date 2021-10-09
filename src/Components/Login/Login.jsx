@@ -1,8 +1,11 @@
 import React from "react";
 import LogoIMG from "../../assets/logo.svg";
 import styled from "styled-components";
+import Patient from "./patient.svg";
+import Doctor from "./doctor.svg";
 import LoginBox from "./LoginBox";
-import SignUpBox from "./SignUpBox";
+// import SignUpBox from "./SignUpBox";
+import Button from "@material-ui/core/Button";
 import "./styles/Login.scss";
 
 function Login() {
@@ -20,6 +23,36 @@ function Login() {
       </SubHeading>
       <div className="auth-container">
         <h1>I'am A</h1>
+        <div>
+          <div className="card">
+            <div className="user-type front">
+              <img src={Patient} alt="patient" />
+              <h1>Patient</h1>
+            </div>
+            <div className="user-type back">
+              <Button variant="contained" color="secondary">
+                Sign In
+              </Button>
+              <Button variant="contained" color="secondary">
+                Log In
+              </Button>
+            </div>
+          </div>
+          <div className="card">
+            <div className="user-type front">
+              <img src={Doctor} alt="doctor" />
+              <h1>Doctor</h1>
+            </div>
+            <div className="user-type back">
+              <Button variant="contained" color="secondary">
+                Sign In
+              </Button>
+              <Button variant="contained" color="secondary">
+                Log In
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="right">
         {LoginBox}
