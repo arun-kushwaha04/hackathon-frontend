@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import NavBar from "../NavBar/navbar";
 // import { doctor } from "../../data";
 import Card from "./Card";
 import Filter from "../Filter/filter";
@@ -27,26 +28,29 @@ export default function Dashboard() {
   }, [filterArray]);
 
   return (
-    <section className="main-section-for-each-page">
-      {!doctor || doctor.length === 0 ? (
-        <h1>No data Available</h1>
-      ) : (
-        <>
-          <Filter />
-          <CardDiv>
-            {doctor.map((element, index) => {
-              return (
-                <Card
-                  element={element}
-                  index={index}
-                  key={`card-element-${index}`}
-                />
-              );
-            })}
-          </CardDiv>
-        </>
-      )}
-    </section>
+    <>
+      <NavBar />
+      <section className="main-section-for-each-page">
+        {!doctor || doctor.length === 0 ? (
+          <h1>No data Available</h1>
+        ) : (
+          <>
+            <Filter />
+            <CardDiv>
+              {doctor.map((element, index) => {
+                return (
+                  <Card
+                    element={element}
+                    index={index}
+                    key={`card-element-${index}`}
+                  />
+                );
+              })}
+            </CardDiv>
+          </>
+        )}
+      </section>
+    </>
   );
 }
 

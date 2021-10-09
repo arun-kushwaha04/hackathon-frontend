@@ -4,21 +4,12 @@
     outline: none;
 }
 
- :root {
+:root {
     --main-color: #fff;
     --second-color: #347deb;
     --box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     --facebook-color: rgb(60, 90, 154);
     --google-color: rgb(220, 74, 61);
-}
-
-html {
-    height: 100%;
-}
-
-body {
-    /* background-image: linear-gradient(310deg, #df98fa, #9055ff); */
-    font-family: sans-serif;
 }
 
 #container {
@@ -47,7 +38,7 @@ body {
 }
 
 #left {
-    background-image: url("https://images.unsplash.com/photo-1615400014497-55726234cccb?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzg4Njg0Ng&ixlib=rb-1.2.1&q=85");
+    /* background-image: url("https://images.unsplash.com/photo-1615400014497-55726234cccb?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxNzg4Njg0Ng&ixlib=rb-1.2.1&q=85"); */
     background-size: cover;
     background-position: center;
     box-shadow: var(--box-shadow);

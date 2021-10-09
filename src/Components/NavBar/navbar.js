@@ -40,9 +40,11 @@ export default function Nav() {
 
           <li key={`navlink-login`}>
             <p>
-              {loginStatus === "true"
-                ? `Hello ${localStorage.getItem("name")}`
-                : "Sign UP/IN"}
+              {loginStatus === "true" ? (
+                `Hello ${localStorage.getItem("name")}`
+              ) : (
+                <Link to="/auth">Sign UP/IN</Link>
+              )}
             </p>
           </li>
         </List>

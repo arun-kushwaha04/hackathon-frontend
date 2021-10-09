@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import NavBar from "../NavBar/navbar";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { SIMPLEGET } from "../../api";
@@ -32,25 +33,28 @@ export default function Appointment() {
   }, [param, userType]);
   console.log(data);
   return (
-    <section className="main-section-for-each-page">
-      <Filter param={param} />
-      <CardDiv>
-        {!data || data.length === 0 ? (
-          <h1>No Data Available</h1>
-        ) : (
-          data.map((element, index) => {
-            return (
-              <Card
-                data={element}
-                param={param}
-                index={index}
-                key={`card-element-${index}`}
-              />
-            );
-          })
-        )}
-      </CardDiv>
-    </section>
+    <>
+      <NavBar />
+      <section className="main-section-for-each-page">
+        <Filter param={param} />
+        <CardDiv>
+          {!data || data.length === 0 ? (
+            <h1>No Data Available</h1>
+          ) : (
+            data.map((element, index) => {
+              return (
+                <Card
+                  data={element}
+                  param={param}
+                  index={index}
+                  key={`card-element-${index}`}
+                />
+              );
+            })
+          )}
+        </CardDiv>
+      </section>
+    </>
   );
 }
 

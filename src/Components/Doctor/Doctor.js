@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
+import NavBar from "../NavBar/navbar";
 import { SIMPLEGET } from "../../api";
 import "./doctor.scss";
 
@@ -36,52 +36,55 @@ export default function Doctor() {
   }, [doctorId]);
   console.log(data);
   return (
-    <section className="main-section-for-each-page">
-      {data ? (
-        <MainDiv className="doctor-detail-list">
-          <h1> {name} </h1>
-          <h2> {data.specialization} </h2>
-          <br />
-          <br />
-          <p>{data.about}</p>
-          <br />
-          <p>
-            {name} has an experience of {data.experience} years.
-          </p>
-          <br />
-          <p>
-            {name} charges ₹{data.fees} for every appointment.
-          </p>
-          <br />
-          {data.rating > 0 && (
-            <>
-              <p>
-                {name} has got an rating of {data.rating}/5 by{" "}
-                {data.totalRatings} patients.
-              </p>
-              <br />
-            </>
-          )}
-          <p>Want To book A slot ??</p>
-          <br />
-          <div>
-            <p>{name} is Available between these times.</p>
+    <>
+      <NavBar />
+      <section className="main-section-for-each-page">
+        {data ? (
+          <MainDiv className="doctor-detail-list">
+            <h1> {name} </h1>
+            <h2> {data.specialization} </h2>
             <br />
-            <ul>
-              {data.slot.map((ele, index) => (
-                <li key={`timeslot-doctor-${index}`}>
-                  <p>{ele}</p>
-                  <br />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <br />
-        </MainDiv>
-      ) : (
-        <h1>No Data Available</h1>
-      )}
-    </section>
+            <br />
+            <p>{data.about}</p>
+            <br />
+            <p>
+              {name} has an experience of {data.experience} years.
+            </p>
+            <br />
+            <p>
+              {name} charges ₹{data.fees} for every appointment.
+            </p>
+            <br />
+            {data.rating > 0 && (
+              <>
+                <p>
+                  {name} has got an rating of {data.rating}/5 by{" "}
+                  {data.totalRatings} patients.
+                </p>
+                <br />
+              </>
+            )}
+            <p>Want To book A slot ??</p>
+            <br />
+            <div>
+              <p>{name} is Available between these times.</p>
+              <br />
+              <ul>
+                {data.slot.map((ele, index) => (
+                  <li key={`timeslot-doctor-${index}`}>
+                    <p>{ele}</p>
+                    <br />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <br />
+          </MainDiv>
+        ) : (
+          <h1>No Data Available</h1>
+        )}
+      </section>
+    </>
   );
 }
 
