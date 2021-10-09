@@ -22,7 +22,7 @@ function Login() {
         and cancel their next appointments.
       </SubHeading>
       <div className="auth-container">
-        <h1>I'am A</h1>
+        <p className="hover-underline">I'am A</p>
         <div>
           <div className="card">
             <div className="user-type front">

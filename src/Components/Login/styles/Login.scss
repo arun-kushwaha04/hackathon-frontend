@@ -1,4 +1,5 @@
 .auth-container {
+    text-align: center;
     h1 {
         font-size: 3.5rem;
         text-align: center;
@@ -24,7 +25,6 @@
         margin: auto;
         font-size: 1.5rem;
         padding: 1rem;
-        background: var(--Lightest_Slate);
         position: relative;
         border-radius: 1rem;
         box-shadow: 0 2px 4px 0 rgba(31, 38, 135, 0.37);
@@ -70,5 +70,30 @@
     }
     .card:hover .back {
         transform: rotateY(0deg);
+    }
+    .hover-underline {
+        display: inline-block;
+        position: relative;
+        font-size: 3.5rem;
+        text-align: center;
+        margin: 2rem 0;
+        letter-spacing: 0.5rem;
+        font-family: "Roboto Mono", monospace;
+    }
+    .hover-underline:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: #4158d0;
+        transition: transform 0.5s ease-in-out;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+    }
+    .hover-underline:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 }
