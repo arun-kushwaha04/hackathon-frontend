@@ -25,9 +25,9 @@ function Login() {
         <p className="hover-underline">I'am A</p>
         <div>
           <div className="card">
+            <h1>Patient</h1>
             <div className="user-type front">
               <img src={Patient} alt="patient" />
-              <h1>Patient</h1>
             </div>
             <div className="user-type back">
               <Button variant="contained" color="secondary">
@@ -39,9 +39,9 @@ function Login() {
             </div>
           </div>
           <div className="card">
+            <h1>Doctor</h1>
             <div className="user-type front">
               <img src={Doctor} alt="doctor" />
-              <h1>Doctor</h1>
             </div>
             <div className="user-type back">
               <Button variant="contained" color="secondary">
