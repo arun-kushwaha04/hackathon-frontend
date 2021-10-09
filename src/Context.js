@@ -3,7 +3,9 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(
+    localStorage.getItem("loggedIn")
+  );
   const [userType, setUserType] = useState("patient");
   const [filterArray, setFilterArray] = useState(["rating"]);
   const [specialization, setSepcialization] = useState("");

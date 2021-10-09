@@ -8,6 +8,7 @@ function LoginBox() {
   const { loginStatus, setLoginStatus } = UseGlobalContext();
 
   const login = async () => {
+    console.log(userData);
     POSTWITHBODY(`/auth/login?user=${userData.type}`, JSON.stringify(userData))
       .then((response) => {
         console.log(response);
@@ -19,6 +20,7 @@ function LoginBox() {
           window.localStorage.setItem("type", response.user.type);
           window.localStorage.setItem("loggedIn", true);
           setLoginStatus(true);
+          alert("logged in");
           window.location.href = "/";
         } else {
           alert(response.message);
@@ -34,7 +36,7 @@ function LoginBox() {
     if (loginStatus === true) {
       window.location.href = "/";
     }
-  }, []);
+  }, [loginStatus]);
 
   return (
     <>
@@ -69,7 +71,7 @@ function LoginBox() {
       <input
         type="email"
         id="email"
-        class="client-info"
+        className="client-info"
         required
         onChange={(e) => {
           setUserData({ ...userData, email: e.target.value });
@@ -81,7 +83,7 @@ function LoginBox() {
       <input
         type="password"
         id="password"
-        class="client-info"
+        className="client-info"
         required
         onChange={(e) => {
           setUserData({ ...userData, password: e.target.value });
@@ -93,7 +95,7 @@ function LoginBox() {
       <input
         type="button"
         id="submit"
-        class="client-info"
+        className="client-info"
         value="Submit"
         onClick={() => {
           login();

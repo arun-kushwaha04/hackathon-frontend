@@ -6,21 +6,16 @@ import Doctor from "./Components/Doctor/Doctor";
 import Error from "./Error";
 import Login from "./Components/Login/Login";
 import { Route, Switch } from "react-router-dom";
-import {UseGlobalContext} from "./Context.js";
-
 
 export default function App() {
-
-  const {loginStatus} = UseGlobalContext();
-
   return (
-    window.localStorage.getItem('loggedIn') === true?
     <React.Fragment>
       <NavBar />
       <Switch>
         <Route path="/" exact>
           <Dashboard />
         </Route>
+        <Route path="/auth" exact component={Login} />
         <Route path="/appointment" exact>
           <Appointment />
         </Route>
@@ -30,6 +25,5 @@ export default function App() {
         <Route path="*" component={Error}></Route>
       </Switch>
     </React.Fragment>
-    : <Login></Login>
   );
 }

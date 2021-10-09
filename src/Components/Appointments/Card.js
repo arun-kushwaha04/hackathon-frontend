@@ -17,7 +17,7 @@ export default function Card(props) {
   if (data) {
     if (userType === "patient") {
       let temp = data.doctorDetails;
-      // console.log("temp", temp);
+      console.log("temp", temp);
       name = temp.doctorname;
       email = temp.doctoremail;
       contact = temp.doctorcontact;

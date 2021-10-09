@@ -7,6 +7,7 @@ import "./navbar.scss";
 
 export default function Nav() {
   const { userType, loginStatus } = UseGlobalContext();
+  console.log(typeof loginStatus);
   const navList = loginStatus
     ? userType === "patient"
       ? [
@@ -39,7 +40,7 @@ export default function Nav() {
 
           <li key={`navlink-login`}>
             <p>
-              {loginStatus === true
+              {loginStatus === "true"
                 ? `Hello ${localStorage.getItem("name")}`
                 : "Sign UP/IN"}
             </p>
