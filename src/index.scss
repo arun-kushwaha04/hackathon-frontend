@@ -31,10 +31,33 @@ body {
     overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .main-section-for-each-page {
     width: 100%;
     height: auto;
     padding: 5rem;
     margin: auto;
     font-family: "Roboto", sans-serif;
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 7px !important;
+    }
 }

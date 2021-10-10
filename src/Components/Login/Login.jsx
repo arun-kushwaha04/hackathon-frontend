@@ -3,8 +3,6 @@ import LogoIMG from "../../assets/logo.svg";
 import styled from "styled-components";
 import Patient from "./patient.svg";
 import Doctor from "./doctor.svg";
-import LoginBox from "./LoginBox";
-// import SignUpBox from "./SignUpBox";
 import Button from "@material-ui/core/Button";
 import "./styles/Login.scss";
 
@@ -53,10 +51,6 @@ function Login() {
             </div>
           </div>
         </div>
-      </div>
-      <div id="right">
-        {LoginBox}
-        {/* <Route path="/signup" exact component={SignUpBox} /> */}
       </div>
     </div>
   );
