@@ -73,5 +73,5 @@ const Logo = styled.div`
 const SubHeading = styled.p`
   width: 100%;
   font-size: 2rem;
-  margin: 2rem;
+  padding: 2rem;
 `;

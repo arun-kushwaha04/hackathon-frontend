@@ -22,13 +22,14 @@ font-family: 'Roboto Mono', monospace; */
 
 html {
     font-family: "Roboto", sans-serif;
-    font-size: 10px;
 }
 
 body {
     background-color: var(--whtie);
     position: relative;
     overflow-x: hidden;
+    font-size: 10px;
+    width: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -57,7 +58,17 @@ body {
 }
 
 @media (max-width: 600px) {
-    html {
-        font-size: 7px !important;
+    body {
+        font-size: 5px;
     }
+}
+
+input,
+textarea,
+button,
+select,
+div,
+i,
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
